@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= title %>
+  </title>
+  <link rel="icon" type="image/x-icon" href="/image/Favicon/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+ 
+  <link rel="stylesheet" href="./css/home.css" />
+</head>
+
+<body>
+<!-- Heading for the TODO LIST -->
+  <Header>
+    <center>
+      <div class="my-4">
+        <h1 style="color: #0A2647; font-family: sans-serif;">TODO LIST</h1>
+      </div>
+    </center>
+  </Header>
+
+  <main>
+
+    <!-- Input area OF TODO LIST -->
+    <div class="input_container">
+      <div class="input my-2">
+
+        <form action="/post" method="post">
+          <div class="row my-2 mx-0" >
+          
+            <div class="col-12 ">
+              <input type="text" name="Todo" class="form-control" placeholder="Enter your task to do.."
+                aria-label="First name" style="height: 80px; font-size: 20px;"  required>
+            </div>
+            <div class="col-6 my-2">
+              <select class="form-select" name="Category" aria-label="Default select example" required>
+                <option value="" disabled selected>Select your Category</option>
+                <option value="Personal">Personal</option>
+                <option value="Professional">Professional</option>
+                <option value="General">General</option>
+                <option value="Important">Important</option>
+              </select>
+            </div>
+            <div class="col-6 my-2">
+              <input type="date" name="Date" class="form-control" placeholder="Last name" aria-label="Last name">
+            </div>
+
+          </div>
+          <center>
+            <div class="my-5">
+              <button class="btn btn-primary " type="submit"><i class="fa-solid fa-plus"></i>&nbsp; ADD</button>
+            </div>
+          </center>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- list area of TODO LIST  -->
+
+      <!-- creating variable for colors -->
+      <% let color; %>
+
+      <div class="d-flex flex-column my-2 align-items-center">
+        <div class="list_data <%=(list.length >=3 ? " list_border" : "" )%>">
+          
+          <% for(let i of list){%>
+            <!-- conditon for changing the color of Category -->
+              <% if(i.Category == "Personal"){%>
+                    <% color="#D71313" %> 
+              <%}else if(i.Category == "Professional"){%>
+                    <% color = "#4E4FEB" %>
+              <%}else if (i.Category == "General"){%>
+                  <% color = "Purple"  %>
+              <%}else{%>
+                <% color = "#00DFA2"  %>
+              <%}%>
+
+            <div class="card my-1 card_element">
+              <div class="card-body ">
+                <h3 class="card-title">
+                 <i class="fa-solid fa-list-check fa-xs"></i>&nbsp;<%= i.Todo %>
+                </h5>
+                <p class="card-text Category my-3" style=  "background-color   : <%=color%>"><i class="fa-solid fa-circle-check"></i>&nbsp;<%= i.Category %>
+                </p>
+                <p class="card-text" style="font-size: 20px;">
+                  <i class="fa-regular fa-calendar-days"></i>&nbsp;<%= i.Date == "" ? "DATE NOT SPECIFIED": i.Date %>
+                </p>
+                <a href="/delete/?id=<%= i._id %>"><button class="btn btn-danger"><i
+                      class="fa-solid fa-trash-can-arrow-up"></i>&nbsp;Delete</button></a>
+              </div>
+            </div>
+            <%}%>
+
+        </div>
+      </div>
+
+  </main>
+
+  <script src="./js/home.js"></script>
+</body>
+
+</html>

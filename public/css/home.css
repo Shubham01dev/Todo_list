@@ -1,0 +1,84 @@
+body{
+    background-image: url("https://cdn.filestackcontent.com/yoUbOe3TdcskkVNBHgCP");
+    background-size:cover;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* input Area */
+
+.input_container{
+    display: flex;
+    justify-content: center;
+    height: 300px;
+  
+    
+}
+
+.input{
+    width: 600px;
+    
+}
+
+input{
+    border: 2px solid black;
+    border-style: double;
+    box-shadow: 1px 2px 3px 1px;
+}
+
+select{
+    border: 2px solid black;
+    border-style: double;
+    box-shadow: 1px 2px 3px 1px;
+}
+
+
+
+/* Todolist */
+
+.list_data{
+    width: 60%;
+    background-color: rgba(255, 0, 0, 0.5);
+
+}
+
+.list_border{
+    height: 500px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: 1px solid aliceblue;
+    border-radius: 1.1rem;
+
+}
+
+.list_border::-webkit-scrollbar{
+    width: 10px;
+    height: 500px;
+    background-color: #144272;
+    border-radius: 1.1rem;
+}
+
+.list_border::-webkit-scrollbar-thumb{
+    border-radius: 1.1rem;
+    background-color: aliceblue;
+
+}
+
+.card_element{
+    box-shadow: 1px 8px 20px 10px;
+    background: linear-gradient(40deg, #F8FDCF,#F9FBE7,#F0EDD4);
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.Category{
+    width: 150px;
+    text-align: center;
+    border: 1px solid darkslategray;
+    padding: 4px;
+    color: white;
+    border-radius: 0.8rem;
+}
